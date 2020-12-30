@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import SearchBar from './SearchBar';
 import youtube from '../apis/youtube';
 import VideoList from './VideoList';
@@ -7,6 +7,10 @@ import VideoDetails from './VideoDetails';
 function App(){
 const [videos, setVideos] = useState([]);
 const [selectedVideo, setSelectedVideo] = useState('');
+
+useEffect(()=>{
+    onTermSubmit('guneet')
+},[])
 
    const onTermSubmit = async (searched) => {
        const response = await youtube.get('/search',{
